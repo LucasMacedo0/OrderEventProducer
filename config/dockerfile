@@ -1,0 +1,9 @@
+FROM openjdk:17-jdk
+
+COPY . .
+
+WORKDIR /app
+
+ENTRYPOINT ["java", "-jar", "order-event-producer.jar"]
+
+EXPOSE 8080
