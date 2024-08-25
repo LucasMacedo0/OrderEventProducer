@@ -10,5 +10,6 @@ public class ErrorResponse {
 
     private String titulo;
     private String detalhe;
+    private Integer codigo;
 
 }

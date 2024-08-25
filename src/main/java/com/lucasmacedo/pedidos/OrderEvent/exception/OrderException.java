@@ -11,4 +11,5 @@ public class OrderException extends RuntimeException{
 
     private String detalhe;
     private String titulo;
+    private Integer codigo;
 }
