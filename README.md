@@ -45,8 +45,3 @@ mvn spring-boot:run
 ### Swagger
 -  Criação de um Swagger basico
 - http://localhost:8080/swagger-ui/index.html
-### Clonando o Repositório
-
-Clone o repositório para sua máquina local:
-
-
