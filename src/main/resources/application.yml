@@ -13,3 +13,5 @@ spring:
     swagger-ui:
       enabled: true
       path: /swagger-ui/index.html
+  jwt:
+    secret: "apiProducer"

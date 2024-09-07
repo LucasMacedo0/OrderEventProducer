@@ -1,5 +1,6 @@
 package com.lucasmacedo.pedidos.OrderEvent.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
@@ -20,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PedidosDTO {
 
-    @NotNull
+    @JsonIgnore
     @Schema(
             title = "ID do Pedido",
             description = "Identificador único do pedido. Deve ser um valor não nulo.",
@@ -30,13 +31,12 @@ public class PedidosDTO {
 
     @NotNull
     @Schema(
-            title = "ID do Cliente",
-            description = "Identificador único do cliente associado ao pedido. Deve ser um valor não nulo.",
+            title = "Nome do Cliente",
+            description = "Nome único do cliente associado ao pedido. Deve ser um valor não nulo.",
             example = "cliente-123"
     )
-    private String idCliente;
+    private String nomeCliente;
 
-    @NotNull
     @NotNull
     @Size(min = 1)
     @Schema(
@@ -69,5 +69,8 @@ public class PedidosDTO {
             example = "PENDENTE"
     )
     private String status = "PENDENTE";
+
+    @JsonIgnore
+    private String ACAO;
 
 }
