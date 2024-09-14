@@ -1,6 +1,6 @@
 package com.lucasmacedo.pedidos.OrderEvent.config;
 
-import com.lucasmacedo.pedidos.OrderEvent.DTO.PedidosDTO;
+import com.lucasmacedo.pedidos.OrderEvent.DTO.Pedidos;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class ProducerKafkaConfig {
 
     @Bean
-    public ProducerFactory<String, PedidosDTO> producerFactory() {
+    public ProducerFactory<String, Pedidos> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -26,7 +26,7 @@ public class ProducerKafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, PedidosDTO> kafkaTemplate() {
+    public KafkaTemplate<String, Pedidos> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 

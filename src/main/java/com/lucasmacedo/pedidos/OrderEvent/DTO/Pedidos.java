@@ -3,14 +3,8 @@ package com.lucasmacedo.pedidos.OrderEvent.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,8 +12,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-public class PedidosDTO {
+@Builder
+public class Pedidos {
 
     @JsonIgnore
     @Schema(
@@ -43,7 +37,7 @@ public class PedidosDTO {
             title = "Itens do Pedido",
             description = "Lista de itens incluídos no pedido. Deve conter pelo menos um item."
     )
-    private List<ItemDTO> itens;
+    private List<ItemPedidos> itens;
 
     @NotNull
     @Valid
@@ -51,7 +45,7 @@ public class PedidosDTO {
             title = "Endereço de Entrega",
             description = "Informações sobre o endereço de entrega do pedido. Deve ser um valor não nulo."
     )
-    private EnderecoDTO endereco;
+    private Endereco endereco;
 
     @NotNull
     @DecimalMin(value = "0.0", inclusive = false)
@@ -62,13 +56,14 @@ public class PedidosDTO {
     )
     private BigDecimal valorTotal;
 
+    @JsonIgnore
     @Pattern(regexp = "PENDENTE|PROCESSANDO|CONCLUÍDO")
     @Schema(
             title = "Status do Pedido",
             description = "Status atual do pedido. Os valores possíveis são 'PENDENTE', 'PROCESSANDO', ou 'CONCLUÍDO'.",
             example = "PENDENTE"
     )
-    private String status = "PENDENTE";
+    private String status;
 
     @JsonIgnore
     private String ACAO;

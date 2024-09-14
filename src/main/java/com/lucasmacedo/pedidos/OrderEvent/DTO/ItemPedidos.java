@@ -2,6 +2,7 @@ package com.lucasmacedo.pedidos.OrderEvent.DTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +10,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 @Getter
 @Setter
-@NoArgsConstructor
-public class ItemDTO {
+@Builder
+public class ItemPedidos {
 
     @NotNull
     @Schema(

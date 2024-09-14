@@ -1,6 +1,6 @@
 package com.lucasmacedo.pedidos.OrderEvent.controller;
 
-import com.lucasmacedo.pedidos.OrderEvent.DTO.PedidosDTO;
+import com.lucasmacedo.pedidos.OrderEvent.DTO.Pedidos;
 import com.lucasmacedo.pedidos.OrderEvent.service.OrdersService;
 import com.lucasmacedo.pedidos.OrderEvent.validation.ValidateRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,8 +31,8 @@ public class OrderController {
             description = "Cria um novo pedido e o envia para o tópico Kafka."
     )
     @PostMapping("/pedidos")
-    public ResponseEntity<PedidosDTO> enviarPedidos(@RequestHeader String authorization, @RequestBody @NotNull PedidosDTO pedidosDTO) {
-        ordersService.enviar(pedidosDTO);
+    public ResponseEntity<Pedidos> enviarPedidos(@RequestBody @NotNull Pedidos pedidos) {
+        ordersService.enviar(pedidos);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -41,9 +41,9 @@ public class OrderController {
             description = "Atualiza um pedido e o envia para o tópico Kafka."
     )
     @PatchMapping("/pedidos/{id}")
-    public ResponseEntity<PedidosDTO> atualizarParcialPedido(@PathVariable @NotBlank String id, @RequestBody @NotNull PedidosDTO pedidosDTO) {
+    public ResponseEntity<Pedidos> atualizarParcialPedido(@PathVariable @NotBlank String id, @RequestBody @NotNull Pedidos pedidos) {
         validateRequest.validaRequest(id);
-        ordersService.atualizarPedido(pedidosDTO);
+        ordersService.atualizarPedido(pedidos);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
