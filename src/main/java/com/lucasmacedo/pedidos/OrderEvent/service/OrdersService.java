@@ -33,7 +33,6 @@ public class OrdersService {
     @Autowired
     private final SequentialIdGenerator idGenerator;
 
-    private final KafkaAdmin kafkaAdmin;
 
     public void enviar(Pedidos pedidos) {
         long generatedId = idGenerator.generateNextId();
@@ -41,9 +40,9 @@ public class OrdersService {
         validateFields.validate(pedidos);
         try {
             pedidos.setACAO("CRIACAO");
-            kafkaTemplate.send(TOPICO_PEDIDOS, pedidos).get();
+            kafkaTemplate.send(TOPICO_PEDIDOS, pedidos);
             log.info("Mensagem enviada ao tópico: {}", TOPICO_PEDIDOS);
-        } catch (Exception e) {
+        } catch (OrderException e) {
             log.error("Erro ao enviar a mensagem ao tópico {}", TOPICO_PEDIDOS, e);
             throw new OrderException("Erro na comunicação com o Kafka", "Não foi possível enviar a mensagem ao tópico Kafka.", HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
