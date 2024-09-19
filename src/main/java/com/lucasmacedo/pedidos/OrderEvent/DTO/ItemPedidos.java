@@ -15,14 +15,6 @@ public class ItemPedidos {
 
     @NotNull
     @Schema(
-            title = "ID do Item",
-            description = "Identificador único do item. Deve ser um valor não nulo.",
-            example = "item123"
-    )
-    private String idItem;
-
-    @NotNull
-    @Schema(
             title = "Descrição",
             description = "Descrição do item. Deve ser um valor não nulo.",
             example = "Cadeira de escritório"

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.lucasmacedo.pedidos</groupId>
 	<artifactId>OrderEventProducer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHNOT</version>
 	<name>OrderEventProducer</name>
 	<description>API responsável pela produção e envio de eventos de pedidos para um tópico Kafka. Facilita a integração com sistemas de gerenciamento de pedidos ao publicar informações detalhadas sobre novos pedidos.</description>
 	<properties>
